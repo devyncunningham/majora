@@ -55,6 +55,8 @@ assets/
 
 Each `mipmap-*` folder should contain its appropriate `ic_launcher.png` file. Each subdirectory in `assets/` should also contain a `styles.xml`. These assets will be copied when MajoraJS runs.
 
+Follow the installation instructions for [babel-codemod-majorajs](https://github.com/SperaHealth/babel-codemod-majorajs).
+
 ## Usage
 
 After creating a `.majora.js` file in the root of your project directory, add the following npm scripts:
