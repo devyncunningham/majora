@@ -46,7 +46,7 @@ This is not optimal as you will need to either import all versions of the same c
 
 ## Installation
 
-Download MajoraJS by running `# todo`.
+Download MajoraJS by running `npm install majorajs`.
 
 Create a `.majora.js` file in the root of your React Native project directory.
 
