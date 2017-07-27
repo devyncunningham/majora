@@ -6,7 +6,7 @@ Majora is a tool to manage white label builds for React Native. Majora manages a
 
 MajoraJS allows you to develop multiple white-label versions based on one main version of your React Native app. MajoraJS makes swapping app names, package ids, and moving assets like app icons easy. MajoraJS also lets you create custom components for each white-label version and import them only for that specific white-label version's build.
 
-MajoraJS's required Babel plugin [`babel-codemod-majorajs`](https://github.com/SperaHealth/babel-codemod-majorajs) allows you to determine at compile-time which components to import for your white-labeled app.
+MajoraJS's required Babel plugin [`babel-plugin-majorajs`](https://github.com/SperaHealth/babel-plugin-majorajs) allows you to determine at compile-time which components to import for your white-labeled app.
 
 Example:
 
@@ -21,7 +21,7 @@ export default class LogInContainer extends React.Component {
 }
 ```
 
-Let's assume you have a `LogIn.js` file that acts as your login component for your app. You also have a white-label component file called `LogIn.whitelabel.js`. With `babel-codemod-majorajs`, your `import` statements are evaluated at compile time. If you use MajoraJS to build your app as a white-label version, Babel will change the `import` declaration to: `import LogIn from '../components/LogIn.whitelabel;` at compile time. This lets you set dynamic `import` statements that get evaluated at build time.
+Let's assume you have a `LogIn.js` file that acts as your login component for your app. You also have a white-label component file called `LogIn.whitelabel.js`. With `babel-plugin-majorajs`, your `import` statements are evaluated at compile time. If you use MajoraJS to build your app as a white-label version, Babel will change the `import` declaration to: `import LogIn from '../components/LogIn.whitelabel;` at compile time. This lets you set dynamic `import` statements that get evaluated at build time.
 
 Without MajoraJS, you have code that probably looks like:
 
@@ -97,7 +97,7 @@ assets/
 
 Each `mipmap-*` folder should contain its appropriate `ic_launcher.png` file. Each subdirectory in `assets/` should also contain a `styles.xml`. These assets will be copied when MajoraJS runs.
 
-Follow the installation instructions for [babel-codemod-majorajs](https://github.com/SperaHealth/babel-codemod-majorajs).
+Follow the installation instructions for [babel-plugin-majorajs](https://github.com/SperaHealth/babel-plugin-majorajs).
 
 ## Usage
 
@@ -114,7 +114,7 @@ Run `npm run majora:init` to generate a `.majora.lock.json` file. Do not manuall
 
 You can run `npm run majora` to be prompted to select which white-label version you want to build as. Otherwise, you can run `./node_modules/majorajs --mask nameOfApp` to build as a specific version without being prompted. The argument provided to `--mask` should match an `appName` for a package in `.majora.js`.
 
-You can add the specific build commands to your npm scripts. You will also need to delete temporary cache files created by the React Native packager for `babel-codemod-majorajs` to work properly.
+You can add the specific build commands to your npm scripts. You will also need to delete temporary cache files created by the React Native packager for `babel-plugin-majorajs` to work properly.
 
 ```json
 "scripts": {
