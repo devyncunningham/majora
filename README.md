@@ -1,6 +1,6 @@
 # MajoraJS
 
-Majora is a tool to manage white label builds for React Native. Majora manages assets for each white label version of your app and interchanges the app and package name.
+Majora is a tool to manage white label builds for React Native. Majora manages assets for each white label version of your app and interchanges the app name, package name, and other assets.
 
 ## Installation
 
@@ -53,7 +53,7 @@ assets/
       styles.xml
 ```
 
-Each `mipmap-*` folder should contain its appropriate `ic_launcher.png` file. These assets will be copied when MajoraJS runs.
+Each `mipmap-*` folder should contain its appropriate `ic_launcher.png` file. Each subdirectory in `assets/` should also contain a `styles.xml`. These assets will be copied when MajoraJS runs.
 
 ## Usage
 
