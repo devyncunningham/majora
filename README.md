@@ -114,12 +114,13 @@ Run `npm run majora:init` to generate a `.majora.lock.json` file. Do not manuall
 
 You can run `npm run majora` to be prompted to select which white-label version you want to build as. Otherwise, you can run `./node_modules/majorajs --mask nameOfApp` to build as a specific version without being prompted. The argument provided to `--mask` should match an `appName` for a package in `.majora.js`.
 
-You can add the specific build commands to your npm scripts:
+You can add the specific build commands to your npm scripts. You will also need to delete temporary cache files created by the React Native packager for `babel-codemod-majorajs` to work properly.
 
 ```json
 "scripts": {
-  "majora:myDoggyDaycare": "./node_modules/majorajs --m 'My Doggy Daycare'",
-  "majora:nashvilleDoggyDaycare": "./node_modules/majorajs --m 'Nashville Doggy Daycare'"
+  "clean": "rm -fr $TMPDIR/react-*",
+  "majora:myDoggyDaycare": "./node_modules/majorajs --m 'My Doggy Daycare' | npm run clean",
+  "majora:nashvilleDoggyDaycare": "./node_modules/majorajs --m 'Nashville Doggy Daycare' | npm run clean"
 }
 ```
 
