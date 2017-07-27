@@ -57,8 +57,10 @@ const getPromptQuestions = () => {
 // User enters no arguments
 if (process.argv.length === 2) {
   inquirer.prompt(getPromptQuestions())
-    .then(() => console.log('Starting Majora 🌝  🌖  🌗  '))
-    .then(({ build }) => swapper(build))
+    .then(({ build }) => {
+      console.log('Starting Majora 🌝  🌖  🌗  ');
+      swapper(build);
+    })
     .then(() => {
       console.log(chalk.bold.green('Success! Build version applied: ' + build));
       console.log('Majora completed. 🌗  🌘  🌚')
