@@ -1,4 +1,4 @@
-# MajoraJS
+# 🌝  MajoraJS
 
 Majora is a tool to manage white label builds for React Native. Majora manages assets for each white label version of your app and interchanges the app name, package name, and other assets.
 
@@ -74,7 +74,7 @@ You can add the specific build commands to your npm scripts:
 
 ```json
 "scripts": {
-  "majora:myDoggyDaycare": "./node_modules/majorajs --m 'My Doggy Daycare'"
+  "majora:myDoggyDaycare": "./node_modules/majorajs --m 'My Doggy Daycare'",
   "majora:nashvilleDoggyDaycare": "./node_modules/majorajs --m 'Nashville Doggy Daycare'"
 }
 ```
