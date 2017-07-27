@@ -1,14 +1,13 @@
 {
   "name": "majorajs",
   "version": "0.1.0",
-  "description": "Change the package name for a React Native app",
+  "description": "Manage white-label or skinned versions of your React Native app",
   "main": "index.js",
   "scripts": {
     "majora": "node index.js",
-    "go": "node src/interface.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Matt Hamil <matt@sperahealth.com>",
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.0.1",
