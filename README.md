@@ -6,7 +6,7 @@ Majora is a tool to manage white label builds for React Native. Majora manages a
 
 MajoraJS allows you to develop multiple white-label versions based on one main version of your React Native app. MajoraJS makes swapping app names, package ids, and moving assets like app icons easy. MajoraJS also lets you create custom components for each white-label version and import them only for that specific white-label version's build.
 
-MajoraJS's required Babel plugin`babel-codemod-majorajs` allows you to determine at compile-time which components to import for your white-labeled app.
+MajoraJS's required Babel plugin [`babel-codemod-majorajs`](https://github.com/SperaHealth/babel-codemod-majorajs) allows you to determine at compile-time which components to import for your white-labeled app.
 
 Example:
 
