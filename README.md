@@ -119,8 +119,8 @@ You can add the specific build commands to your npm scripts. You will also need 
 ```json
 "scripts": {
   "clean": "rm -fr $TMPDIR/react-*",
-  "majora:myDoggyDaycare": "./node_modules/majorajs --m 'My Doggy Daycare' | npm run clean",
-  "majora:nashvilleDoggyDaycare": "./node_modules/majorajs --m 'Nashville Doggy Daycare' | npm run clean"
+  "majora:myDoggyDaycare": "./node_modules/majorajs --mask 'My Doggy Daycare' | npm run clean",
+  "majora:nashvilleDoggyDaycare": "./node_modules/majorajs --mask 'Nashville Doggy Daycare' | npm run clean"
 }
 ```
 
