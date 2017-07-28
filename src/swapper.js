@@ -141,7 +141,7 @@ const init = async (newAppName) => {
         '⚠️  Build already configured as ' + newAppName,
       )
     );
-    process.exit(1);
+    process.exit(0);
   }
 
   const oldPackage = config.packages.find((package) => package.appName === currentBuild);
