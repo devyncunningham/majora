@@ -37,10 +37,10 @@ const entries = (files) => {
 
 const writeLockFile = async (whiteLabelFiles, newAppName) => {
   console.log(
-    chalk.blue('Generating .majora.lock.json...')
+    chalk.blue('Generating majora.lock.json...')
   );
 
-  return fs.writeJson('./.majora.lock.json', {
+  return fs.writeJson('./majora.lock.json', {
     currentBuild: newAppName,
     components: entries(whiteLabelFiles)
   }, { spaces: 2 });
