@@ -110,7 +110,7 @@ After creating a `.majora.js` file in the root of your project directory, add th
 }
 ```
 
-Run `npm run majora:init` to generate a `.majora.lock.json` file. Do not manually edit this file. This will save your current white-label version's configuration.
+Run `npm run majora:init` to generate a `majora.lock.json` file. Do not manually edit this file. This will save your current white-label version's configuration.
 
 You can run `npm run majora` to be prompted to select which white-label version you want to build as. Otherwise, you can run `./node_modules/majorajs --mask nameOfApp` to build as a specific version without being prompted. The argument provided to `--mask` should match an `appName` for a package in `.majora.js`.
 
