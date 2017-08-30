@@ -132,7 +132,7 @@ const postScript = async (post) => {
 }
 
 const init = async (newAppName, { moveAssets }) => {
-  const lockFile = require('../../../.majora.lock.json');
+  const lockFile = require('../../../majora.lock.json');
   const { currentBuild } = lockFile;
 
   if (newAppName.toLowerCase() === currentBuild.toLowerCase()) {

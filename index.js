@@ -12,7 +12,7 @@ program
 
 program
   .command('init')
-  .description('Generate a .majora.lock.json file')
+  .description('Generate a majora.lock.json file')
   .action(async () => {
     const appName = await getAppName();
     await generator(appName);
