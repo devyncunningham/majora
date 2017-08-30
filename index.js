@@ -24,6 +24,9 @@ program
 program
   .option('-m, --mask [appName]', 'Swap the current version of the app to [appName]');
 
+program
+  .option('-n, --noassets', 'Swap the current version of the app without moving image assets.');
+
 program.parse(process.argv);
 
 // No argument for the flag --mask was entered
@@ -74,8 +77,12 @@ if (process.argv.length === 2) {
 if (program.mask !== undefined) {
   const [ firstLetter, ...otherLetters ] = program.mask;
   const capitalizedMaskName = firstLetter.toUpperCase() + otherLetters.join('');
+
+  // User added a flag to -n
+  const moveAssets = program.noassets != undefined;
+
   console.log('Starting Majora 🌝  🌖  🌗  ');
-  swapper(capitalizedMaskName)
+  swapper(capitalizedMaskName, { moveAssets })
     .then(() => {
       console.log(chalk.bold.green('Success! Build version applied: ' + capitalizedMaskName));
       console.log('Majora completed. 🌗  🌘  🌚')

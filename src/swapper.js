@@ -131,7 +131,7 @@ const postScript = async (post) => {
   await exec(post);
 }
 
-const init = async (newAppName) => {
+const init = async (newAppName, { moveAssets }) => {
   const lockFile = require('../../../.majora.lock.json');
   const { currentBuild } = lockFile;
 
@@ -163,16 +163,19 @@ const init = async (newAppName) => {
   }
 
   await preScript(newPackage.prescript);
-  await changePackageId(oldPackage.packageName, newPackage.packageName);
-  await changeAppName(oldPackage.appName, newPackage.appName);
-  await changeAppIcon(newPackage.resources);
-  await changeAppStyle(newPackage.resources);
-  const baseFolder = './android/app/src/main/java/' + oldPackage.packageName.replace(/\./g, '/') + '/';
-  const destination = './android/app/src/main/java/' + newPackage.packageName.replace(/\./g, '/') + '/';
-  await changeProjectSubfolderName(baseFolder, destination);
-  const oldProjectSubfolderName = './android/app/src/main/java/' + oldPackage.packageName.replace(/\./g, '/') + '/';
-  await removeOldProjectSubfolder(oldProjectSubfolderName);
-  await cleanGradle();
+
+  if (!moveAssets) { // only update majora.lock.json if moveAssets is true
+    await changePackageId(oldPackage.packageName, newPackage.packageName);
+    await changeAppName(oldPackage.appName, newPackage.appName);
+    await changeAppIcon(newPackage.resources);
+    await changeAppStyle(newPackage.resources);
+    const baseFolder = './android/app/src/main/java/' + oldPackage.packageName.replace(/\./g, '/') + '/';
+    const destination = './android/app/src/main/java/' + newPackage.packageName.replace(/\./g, '/') + '/';
+    await changeProjectSubfolderName(baseFolder, destination);
+    const oldProjectSubfolderName = './android/app/src/main/java/' + oldPackage.packageName.replace(/\./g, '/') + '/';
+    await removeOldProjectSubfolder(oldProjectSubfolderName);
+    await cleanGradle();
+  }
   await generator(newPackage.appName);
   await postScript(newPackage.postscript);
 };
