@@ -40,8 +40,16 @@ const writeLockFile = async (whiteLabelFiles, newAppName) => {
     chalk.blue('Generating majora.lock.json...')
   );
 
+  const majoraConfig = require('../../../.majora.js');
+  const newConfig = majoraConfig.packages.find((package) => package.appName === newAppName);
+  const currentBuildObj = {
+    newAppName,
+    packageName: newConfig.packageName,
+    bundleId: newConfig.bundleId
+  };
+
   return fs.writeJson('./majora.lock.json', {
-    currentBuild: newAppName,
+    currentBuild: currentBuildObj,
     components: entries(whiteLabelFiles)
   }, { spaces: 2 });
 };
