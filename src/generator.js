@@ -43,7 +43,7 @@ const writeLockFile = async (whiteLabelFiles, newAppName) => {
   const majoraConfig = require('../../../.majora.js');
   const newConfig = majoraConfig.packages.find((package) => package.appName === newAppName);
   const currentBuildObj = {
-    newAppName,
+    appName: newAppName,
     packageName: newConfig.packageName,
     bundleId: newConfig.bundleId
   };
