@@ -135,7 +135,7 @@ const init = async (newAppName, { moveAssets }) => {
   const lockFile = require('../../../majora.lock.json');
   const { currentBuild } = lockFile;
 
-  if (newAppName.toLowerCase() === currentBuild.toLowerCase()) {
+  if (newAppName.toLowerCase() === currentBuild.appName.toLowerCase()) {
     console.log(
       chalk.green(
         '⚠️  Build already configured as ' + newAppName,
@@ -144,7 +144,7 @@ const init = async (newAppName, { moveAssets }) => {
     process.exit(0);
   }
 
-  const oldPackage = config.packages.find((package) => package.appName === currentBuild);
+  const oldPackage = config.packages.find((package) => package.appName === currentBuild.appName);
   if (!oldPackage) {
     throw new Error([
       'Failed to find current package settings in your .majora.js file.',
