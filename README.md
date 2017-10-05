@@ -1,3 +1,7 @@
+#### THIS PROJECT IS STILL IN BETA
+
+This library may not work with your project.
+
 # 🌝  MajoraJS
 
 Majora is a tool to manage white label builds for React Native. Majora manages assets for each white label version of your app and interchanges the app name, package name, and other assets.
