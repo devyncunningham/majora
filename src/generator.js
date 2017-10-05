@@ -45,7 +45,7 @@ const entries = (whiteLabels) => {
       return [ ...all, ...whiteLabel.files ];
     }
 
-    return whiteLabel.files.reduce((updatedAll, component, arr) => {
+    return whiteLabel.files.reduce((updatedAll, component) => {
       const componentInExistingList = all.find(
         file => file.identifier === component.identifier
       );
