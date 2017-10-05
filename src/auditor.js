@@ -44,9 +44,9 @@ const getWhiteLabelComponent = (file) => {
  * }
  */
 const getWhiteLabelFiles = (config) => {
-  return config.packages.map((pkg) => {
+  return config.packages.reduce((all, pkg) => {
     if (pkg.extension) {
-      return {
+      return [ ...all, {
         ...pkg,
         files: glob.sync(`*${pkg.extension}`, { matchBase: true })
           .map(path => ({
@@ -57,9 +57,10 @@ const getWhiteLabelFiles = (config) => {
             }
           })
         )
-      };
+      } ];
     }
-  });
+    return all;
+  }, []);
 };
 
 const getAppName = async () => {
