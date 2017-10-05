@@ -125,24 +125,15 @@ const cleanGradle = async () => {
 
 const preScript = async (pre) => {
   await exec(pre);
-}
+};
 
 const postScript = async (post) => {
   await exec(post);
-}
+};
 
 const init = async (newAppName, { moveAssets }) => {
   const lockFile = require('../../../majora.lock.json');
   const { currentBuild } = lockFile;
-
-  if (newAppName.toLowerCase() === currentBuild.appName.toLowerCase()) {
-    console.log(
-      chalk.green(
-        '⚠️  Build already configured as ' + newAppName,
-      )
-    );
-    process.exit(0);
-  }
 
   const oldPackage = config.packages.find((package) => package.appName === currentBuild.appName);
   if (!oldPackage) {
@@ -176,7 +167,7 @@ const init = async (newAppName, { moveAssets }) => {
     await removeOldProjectSubfolder(oldProjectSubfolderName);
     await cleanGradle();
   }
-  await generator(newPackage.appName);
+  await generator(newPackage, config);
   await postScript(newPackage.postscript);
 };
 
