@@ -69,7 +69,7 @@ const entries = (whiteLabels) => {
  };
 
 const writeLockFile = async (newPackage, config) => {
-  const whiteLabelFiles = getWhiteLabelFiles();
+  const whiteLabelFiles = getWhiteLabelFiles(config);
   const { appName, extension } = newPackage;
 
   console.log(
