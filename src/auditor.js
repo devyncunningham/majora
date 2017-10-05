@@ -53,7 +53,7 @@ const getWhiteLabelFiles = (config) => {
             identifier: getIdentifier(pkg.extension, path),
             default: getDefaultComponent(pkg.extension, path),
             whitelabel: {
-              [pkg.appName]: getWhiteLabelComponent(pkg.extension, file)
+              [pkg.appName]: getWhiteLabelComponent(pkg.extension, path)
             }
           })
         )
