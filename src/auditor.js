@@ -48,7 +48,7 @@ const getWhiteLabelFiles = (config) => {
     if (pkg.extension) {
       return [ ...all, {
         ...pkg,
-        files: glob.sync(`*${pkg.extension}`, { matchBase: true })
+        files: glob.sync(`*${pkg.extension}.js`, { matchBase: true })
           .map(path => ({
             identifier: getIdentifier(pkg.extension, path),
             default: getDefaultComponent(pkg.extension, path),
