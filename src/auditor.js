@@ -44,16 +44,16 @@ const getWhiteLabelComponent = (file) => {
  * }
  */
 const getWhiteLabelFiles = (config) => {
-  return config.packages.map((package) => {
-    if (package.extension) {
+  return config.packages.map((pkg) => {
+    if (pkg.extension) {
       return {
-        ...package,
-        files: glob.sync(`*${package.extension}`, { matchBase: true })
+        ...pkg,
+        files: glob.sync(`*${pkg.extension}`, { matchBase: true })
           .map(path => ({
-            identifier: getIdentifier(package.extension, path),
-            default: getDefaultComponent(package.extension, path),
+            identifier: getIdentifier(pkg.extension, path),
+            default: getDefaultComponent(pkg.extension, path),
             whitelabel: {
-              [package.appName]: getWhiteLabelComponent(package.extension, file)
+              [pkg.appName]: getWhiteLabelComponent(pkg.extension, file)
             }
           })
         )

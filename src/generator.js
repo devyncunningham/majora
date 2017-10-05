@@ -76,7 +76,7 @@ const writeLockFile = async (newPackage, config) => {
     chalk.blue('Generating majora.lock.json...')
   );
 
-  const newConfig = config.packages.find((package) => package.appName === appName);
+  const newConfig = config.packages.find((pkg) => pkg.appName === appName);
   const currentBuildObj = {
     appName,
     packageName: newConfig.packageName,
