@@ -1,3 +1,7 @@
+/**
+ * This module is responsible for reading from the file system.
+ *
+ */
 const glob = require('glob');
 const xml2js = require('xml2js');
 const fs = require('fs-extra');
@@ -5,7 +9,58 @@ const { promisify } = require('util');
 const readFileAsync = promisify(fs.readFile);
 const parseString = promisify(xml2js.parseString);
 
-const getWhiteLabelFiles = () => glob.sync('*.whitelabel.js', { matchBase: true });
+const getIdentifier = (extension = '', file) => {
+  return file
+    .split('/')
+    .slice(-1)
+    .join()
+    .replace(`${extension}.js`, '')
+};
+
+const getDefaultComponent = (extension = '', file) => {
+  return file
+    .replace('app/', '')
+    .replace(`${extension}.js`, '');
+};
+
+const getWhiteLabelComponent = (file) => {
+  return file
+    .replace('app/', '')
+    .replace('.js', '');
+};
+
+/**
+ * Finds all of the white label files for each build
+ * @param   {MajoraConfig} config - majora.js config object
+ * @returns {
+ *   Array<{
+ *     ...package,           // package key/value pairs from majora.js
+ *     identifier: string,   // identifier name of component used in imports
+ *     default: string,      // default component location of non-whitelabel version
+ *     whitelabel: {
+ *       [ string ]: string  // key is the white label app name, value is its white label component name
+ *     }
+ *   }>
+ * }
+ */
+const getWhiteLabelFiles = (config) => {
+  return config.packages.map((package) => {
+    if (package.extension) {
+      return {
+        ...package,
+        files: glob.sync(`*${package.extension}`, { matchBase: true })
+          .map(path => ({
+            identifier: getIdentifier(package.extension, path),
+            default: getDefaultComponent(package.extension, path),
+            whitelabel: {
+              [package.appName]: getWhiteLabelComponent(package.extension, file)
+            }
+          })
+        )
+      };
+    }
+  });
+};
 
 const getAppName = async () => {
   try {
