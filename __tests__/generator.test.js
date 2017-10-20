@@ -3,8 +3,6 @@ const generator = require('../src/generator');
 
 describe('A list of components should exist such that each component lists each of its white label variants', () => {
   it('should create a list of components with each white label and their respective white-label components', () => {
-    const util = require('util');
-
     const config = require('mockMajoraConfig');
     const whiteLabelFiles = auditor.getWhiteLabelFiles(config);
     const componentEntries = generator.getComponentEntries(whiteLabelFiles);
