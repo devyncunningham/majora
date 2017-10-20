@@ -17,13 +17,13 @@ const getIdentifier = (extension = '', file) => {
     .replace(`${extension}.js`, '')
 };
 
-const getDefaultComponent = (extension = '', file) => {
+const getDefaultComponentPath = (extension = '', file) => {
   return file
     .replace('app/', '')
     .replace(`${extension}.js`, '');
 };
 
-const getWhiteLabelComponent = (file) => {
+const getWhiteLabelComponentPath = (file) => {
   return file
     .replace('app/', '')
     .replace('.js', '');
@@ -51,9 +51,9 @@ const getWhiteLabelFiles = (config) => {
         files: glob.sync(`*${pkg.extension}.js`, { matchBase: true })
           .map(path => ({
             identifier: getIdentifier(pkg.extension, path),
-            default: getDefaultComponent(pkg.extension, path),
+            default: getDefaultComponentPath(pkg.extension, path),
             whitelabel: {
-              [pkg.appName]: getWhiteLabelComponent(pkg.extension, path)
+              [pkg.appName]: getWhiteLabelComponentPath(path)
             }
           })
         )
@@ -77,5 +77,8 @@ const getAppName = async () => {
 
 module.exports = {
   getAppName,
+  getIdentifier,
+  getDefaultComponentPath,
+  getWhiteLabelComponentPath,
   getWhiteLabelFiles
 };

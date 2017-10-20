@@ -15,7 +15,7 @@ program
   .description('Generate a majora.lock.json file')
   .action(async () => {
     const appName = await getAppName();
-    await generator(appName);
+    await generator.writeLockFile(appName, config);
     console.log(
       chalk.green('Majora lock file created! 🌛')
     );

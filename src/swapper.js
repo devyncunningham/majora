@@ -167,7 +167,7 @@ const init = async (newAppName, { moveAssets }) => {
     await removeOldProjectSubfolder(oldProjectSubfolderName);
     await cleanGradle();
   }
-  await generator(newPackage, config);
+  await generator.writeLockFile(newPackage, config);
   await postScript(newPackage.postscript);
 };
 
