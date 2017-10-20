@@ -4,6 +4,8 @@ This library may not be suitable for your project. Future updates will add more 
 
 # 🌝  MajoraJS
 
+[![CircleCI](https://circleci.com/gh/SperaHealth/majora/tree/master.svg?style=svg)](https://circleci.com/gh/SperaHealth/majora/tree/master)
+
 Majora is a tool to manage white label builds for React Native. Majora manages assets for each white label version of your app and interchanges the app name, package name, and other assets.
 
 ## Why MajoraJS?
