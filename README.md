@@ -1,6 +1,6 @@
 #### THIS PROJECT IS STILL IN BETA
 
-This library may not work with your project.
+This library may not be suitable for your project. Future updates will add more documentation.
 
 # 🌝  MajoraJS
 
