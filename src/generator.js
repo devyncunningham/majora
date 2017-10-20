@@ -39,20 +39,22 @@ const { getWhiteLabelFiles } = require('./auditor');
  *
  * @returns see desc above
  */
-const entries = (whiteLabels) => {
+const getComponentEntries = (whiteLabels) => {
+  const util = require('util');
   return whiteLabels.reduce((all, whiteLabel) => {
     if (!all.length) {
       return [ ...all, ...whiteLabel.files ];
     }
 
-    return whiteLabel.files.reduce((updatedAll, component) => {
-      const componentInExistingList = all.find(
+    return whiteLabel.files.reduce((updatedAll, component, index) => {
+      const componentInExistingList = updatedAll.find(
         file => file.identifier === component.identifier
       );
       if (componentInExistingList) {
-        const indexOfComponent = all.indexOf(componentInExistingList);
-        return [
-          ...all.slice(0, indexOfComponent),
+        const indexOfComponent = updatedAll.indexOf(componentInExistingList);
+
+        const updatedList = [
+          ...updatedAll.slice(0, indexOfComponent),
           {
             ...componentInExistingList,
             whitelabel: {
@@ -60,15 +62,17 @@ const entries = (whiteLabels) => {
               ...component.whitelabel
             }
           },
-          ...all.slice(indexOfComponent + 1)
+          ...updatedAll.slice(indexOfComponent + 1)
         ];
+
+        return updatedList;
       }
       return [ ...updatedAll, component ];
-    }, []);
+    }, all);
   }, []);
  };
 
-const writeLockFile = async (newPackage, config) => {
+const writeLockFile = (newPackage, config) => {
   const whiteLabelFiles = getWhiteLabelFiles(config);
   const { appName, extension } = newPackage;
 
@@ -85,8 +89,12 @@ const writeLockFile = async (newPackage, config) => {
 
   return fs.writeJson('./majora.lock.json', {
     currentBuild: currentBuildObj,
-    components: entries(whiteLabelFiles)
+    components: getComponentEntries(whiteLabelFiles)
   }, { spaces: 2 });
 };
 
-module.exports = (newPackage, config) => writeLockFile(newPackage, config);
+
+module.exports = {
+  getComponentEntries,
+  writeLockFile
+};

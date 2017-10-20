@@ -1,15 +1,15 @@
 {
   "name": "majorajs",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Manage white-label or skinned versions of your React Native app",
   "main": "index.js",
   "homepage": "https://github.com/sperahealth/majora",
   "bugs": {
     "url": "https://github.com/sperahealth/majora/issues"
-   },
+  },
   "scripts": {
     "majora": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Matt Hamil <matt@sperahealth.com>",
   "license": "ISC",
@@ -23,5 +23,8 @@
     "mv": "^2.1.1",
     "replace": "^0.3.0",
     "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
   }
 }
