@@ -164,7 +164,7 @@ const init = async (newAppName, { moveAssets }) => {
     const destination = './android/app/src/main/java/' + newPackage.packageName.replace(/\./g, '/') + '/';
     await changeProjectSubfolderName(baseFolder, destination);
     const oldProjectSubfolderName = './android/app/src/main/java/' + oldPackage.packageName.replace(/\./g, '/') + '/';
-    await removeOldProjectSubfolder(oldProjectSubfolderName);
+    //await removeOldProjectSubfolder(oldProjectSubfolderName); // Don't remove old folder, in case same as current
     await cleanGradle();
   }
   await generator.writeLockFile(newPackage, config);
