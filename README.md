@@ -1,6 +1,8 @@
-#### THIS PROJECT IS STILL IN BETA
+#### THIS PROJECT IS NO LONGER BEING DEVELOPED OR BEING MAINTAINED
 
-This library may not be suitable for your project. Future updates will add more documentation.
+The organization that was behind this library no longer exists and this repository is only remaining as a reference to past lives and possible use/adoption by other parties.  
+
+### THIS PROJECT IS NO LONGER BEING DEVELOPED OR BEING MAINTAINED
 
 # 🌝  MajoraJS
 
